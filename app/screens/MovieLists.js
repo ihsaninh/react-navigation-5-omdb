@@ -11,7 +11,7 @@ import {
 
 const width = Dimensions.get('window').width;
 
-const MovieLists = props => {
+const MovieLists = ({ navigation }) => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -28,23 +28,33 @@ const MovieLists = props => {
     getMovies();
   }, []);
 
+  const handleOnpress = item => () => {
+    navigation.navigate('MovieDetails', { imdbID: item });
+  }
+
   const renderItem = ({ item }) => {
     return (
       <View style={Styles.container}>
-        <TouchableOpacity style={Styles.movieCard} activeOpacity={0.8}>
+        <TouchableOpacity style={Styles.movieCard} activeOpacity={0.8} onPress={handleOnpress(item.imdbID)}>
           <View style={Styles.bannerContainer}>
             <Image style={Styles.banner} source={{uri: item.Poster}} />
           </View>
           <View style={Styles.movieDescription}>
             <Text style={Styles.movieTitle}>{item.Title}</Text>
-            <Text style={Styles.movieSubtitle}>Released: {item.Year}</Text>
-            <Text style={Styles.movieSubtitle}>ImdbId: {item.imdbID}</Text>
-            <Text style={Styles.movieSubtitle}>Type: {item.Type}</Text>
+            <Text style={Styles.movieSubtitle}><Text style={Styles.movieSubJudul}>Released:</Text> {item.Year}</Text>
+            <Text style={Styles.movieSubtitle}><Text style={Styles.movieSubJudul}>imdbID:</Text> {item.imdbID}</Text>
+            <Text style={Styles.movieSubtitle}><Text style={Styles.movieSubJudul}>Type:</Text> {item.Type}</Text>
           </View>
         </TouchableOpacity>
       </View>
     );
   };
+
+  const separator = () => {
+    return (
+      <View style={Styles.separator} />
+    )
+  }
 
   return (
     <FlatList 
@@ -52,6 +62,7 @@ const MovieLists = props => {
       renderItem={renderItem}
       keyExtractor={(_, index) => index.toString()}
       showsVerticalScrollIndicator={false}  
+      ItemSeparatorComponent={separator}
     />
   )
 };
@@ -75,7 +86,7 @@ const Styles = StyleSheet.create({
   banner: {
     height: 125,
     width: 125,
-    borderRadius: 5
+    borderRadius: 10
   },
   movieDescription: {
     flex: 1.9,
@@ -93,6 +104,14 @@ const Styles = StyleSheet.create({
     color: 'white',
     fontSize: 15,
     paddingBottom: 10
+  },
+  movieSubJudul: {
+    fontWeight: 'bold'
+  },
+  separator: {
+    height: 2,
+    width,
+    backgroundColor: '#32414a'
   }
 })
 

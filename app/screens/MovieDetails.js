@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
 
-class MovieDetails extends Component {
-  render() {
-    return (
-      <View>
-        <Text>MovieDetails</Text>
-      </View>
-    )
-  }
-}
+const MovieDetails = ({ route }) => {
+  const { imdbID } = route.params
+  return (
+    <View>
+      <Text>{imdbID}</Text>
+    </View>
+  );
+};
 
 export default MovieDetails;

@@ -21,8 +21,8 @@ const RootNavigation = () => {
   return (
     <NavigationNativeContainer>
       <Stack.Navigator screenOptions={screenOptions}>
-        <Stack.Screen name="The Open Movie Database" component={MovieLists} />
-        <Stack.Screen name="Movie Details" component={MovieDetails} />
+        <Stack.Screen name="MovieList" component={MovieLists} options={{ title: 'The Open Movie Database' }} />
+        <Stack.Screen name="MovieDetails" component={MovieDetails} />
       </Stack.Navigator>
     </NavigationNativeContainer>
   );
