@@ -17,7 +17,7 @@ const MovieLists = props => {
 
   useEffect(() => {
     const getMovies = () => {
-      fetch('http://www.omdbapi.com/?s=Avengers&apikey=867fb0f7')
+      fetch('http://www.omdbapi.com/?s=Harry Potter&apikey=867fb0f7')
         .then(res => res.json())
         .then(movies => {
           setMovies(movies.Search);
@@ -50,7 +50,8 @@ const MovieLists = props => {
     <FlatList 
       data={movies}
       renderItem={renderItem}
-      keyExtractor={(_, index) => index.toString()}  
+      keyExtractor={(_, index) => index.toString()}
+      showsVerticalScrollIndicator={false}  
     />
   )
 };
@@ -58,6 +59,7 @@ const MovieLists = props => {
 const Styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#2c3940',
   },
   movieCard: {
     flexDirection: 'row',
@@ -67,26 +69,28 @@ const Styles = StyleSheet.create({
     width: (width * 0.92)
   },
   bannerContainer: {
-    flex: 1.15,
+    flex: 1.2,
     justifyContent: 'center'
   },
   banner: {
-    height: 120,
-    width: 120,
+    height: 125,
+    width: 125,
     borderRadius: 5
   },
   movieDescription: {
-    flex: 2,
+    flex: 1.9,
     flexDirection: 'column',
     marginLeft: 10,
   },
   movieTitle: {
+    color: 'white',
     fontSize: 18,
     fontWeight: 'bold',
     paddingBottom: 10,
     lineHeight: 25
   },
   movieSubtitle: {
+    color: 'white',
     fontSize: 15,
     paddingBottom: 10
   }
