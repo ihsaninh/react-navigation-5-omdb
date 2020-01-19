@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { 
   Text, 
   View, 
@@ -13,24 +13,26 @@ const width = Dimensions.get('window').width;
 
 const MovieLists = ({ navigation }) => {
   const [movies, setMovies] = useState([]);
+  const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const getMovies = () => {
-      fetch('http://www.omdbapi.com/?s=Harry Potter&apikey=867fb0f7')
-        .then(res => res.json())
-        .then(movies => {
-          setMovies(movies.Search);
-          setLoading(false);
-        })
-        .catch(err => console.log(err))
-    }
     getMovies();
   }, []);
 
+  const getMovies = () => {
+    fetch(`http://www.omdbapi.com/?s=Harry Potter&apikey=867fb0f7&page=${page}`)
+      .then(res => res.json())
+      .then(movies => {
+        setMovies(movies.Search);
+        setLoading(false);
+      })
+      .catch(err => console.log(err))
+  }
+
   const handleOnpress = item => () => {
     navigation.navigate('MovieDetails', { imdbID: item });
-  }
+  };
 
   const renderItem = ({ item }) => {
     return (
@@ -53,8 +55,8 @@ const MovieLists = ({ navigation }) => {
   const separator = () => {
     return (
       <View style={Styles.separator} />
-    )
-  }
+    );
+  };
 
   return (
     <FlatList 
@@ -77,7 +79,7 @@ const Styles = StyleSheet.create({
     padding: 10,
     margin: 10,
     marginBottom: 0,
-    width: (width * 0.92)
+    width: (width * 0.92),
   },
   bannerContainer: {
     flex: 1.2,
@@ -86,7 +88,7 @@ const Styles = StyleSheet.create({
   banner: {
     height: 125,
     width: 125,
-    borderRadius: 10
+    borderRadius: 10,
   },
   movieDescription: {
     flex: 1.9,
@@ -98,20 +100,20 @@ const Styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     paddingBottom: 10,
-    lineHeight: 25
+    lineHeight: 25,
   },
   movieSubtitle: {
     color: 'white',
     fontSize: 15,
-    paddingBottom: 10
+    paddingBottom: 10,
   },
   movieSubJudul: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   separator: {
     height: 2,
     width,
-    backgroundColor: '#32414a'
+    backgroundColor: '#32414a',
   }
 })
 
