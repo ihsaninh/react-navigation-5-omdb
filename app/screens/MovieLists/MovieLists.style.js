@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from 'react-native'
+import { StyleSheet, Dimensions } from 'react-native';
 
 const width = Dimensions.get('window').width;
 
@@ -15,11 +15,11 @@ const Styles = StyleSheet.create({
     padding: 10,
     margin: 10,
     marginBottom: 0,
-    width: (width * 0.92),
+    width: width * 0.92,
   },
   bannerContainer: {
     flex: 1.2,
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   banner: {
     height: 125,
@@ -36,22 +36,22 @@ const Styles = StyleSheet.create({
     fontSize: 18,
     paddingBottom: 10,
     lineHeight: 25,
-    fontFamily: 'Raleway-SemiBold'
+    fontFamily: 'Raleway-SemiBold',
   },
   movieSubtitle: {
     color: 'white',
     fontSize: 15,
     paddingBottom: 10,
-    fontFamily: 'Raleway-Regular'
+    fontFamily: 'Raleway-Regular',
   },
   movieSubJudul: {
-    fontFamily: 'Raleway-SemiBold'
+    fontFamily: 'Raleway-SemiBold',
   },
   separator: {
     height: 2,
     width,
     backgroundColor: '#32414a',
-  }
+  },
 });
 
 export { Styles };

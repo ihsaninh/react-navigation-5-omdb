@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react'
-import { 
-  Text, 
-  View, 
-  StyleSheet, 
-  Image, 
-  FlatList, 
+import React, { useState, useEffect } from 'react';
+import {
+  Text,
+  View,
+  StyleSheet,
+  Image,
+  FlatList,
   Dimensions,
-  TouchableOpacity 
-} from 'react-native'
+  TouchableOpacity,
+} from 'react-native';
 
 import { Styles } from './MovieLists.style';
 
@@ -20,9 +20,11 @@ const MovieLists = ({ navigation }) => {
   }, [page]);
 
   const getMovies = async () => {
-    const response = await fetch(`http://www.omdbapi.com/?s=Transformers&apikey=867fb0f7&page=${page}`);
+    const response = await fetch(
+      `http://www.omdbapi.com/?s=Transformers&apikey=867fb0f7&page=${page}`,
+    );
     const data = await response.json();
-    setMovies([...movies,...data.Search]);
+    setMovies([...movies, ...data.Search]);
   };
 
   const handleOnpress = item => () => {
@@ -36,15 +38,24 @@ const MovieLists = ({ navigation }) => {
   const renderItem = ({ item }) => {
     return (
       <View style={Styles.container}>
-        <TouchableOpacity style={Styles.movieCard} activeOpacity={0.8} onPress={handleOnpress(item.imdbID)}>
+        <TouchableOpacity
+          style={Styles.movieCard}
+          activeOpacity={0.8}
+          onPress={handleOnpress(item.imdbID)}>
           <View style={Styles.bannerContainer}>
-            <Image style={Styles.banner} source={{uri: item.Poster}} />
+            <Image style={Styles.banner} source={{ uri: item.Poster }} />
           </View>
           <View style={Styles.movieDescription}>
             <Text style={Styles.movieTitle}>{item.Title}</Text>
-            <Text style={Styles.movieSubtitle}><Text style={Styles.movieSubJudul}>Released:</Text> {item.Year}</Text>
-            <Text style={Styles.movieSubtitle}><Text style={Styles.movieSubJudul}>imdbID:</Text> {item.imdbID}</Text>
-            <Text style={Styles.movieSubtitle}><Text style={Styles.movieSubJudul}>Type:</Text> {item.Type}</Text>
+            <Text style={Styles.movieSubtitle}>
+              <Text style={Styles.movieSubJudul}>Released:</Text> {item.Year}
+            </Text>
+            <Text style={Styles.movieSubtitle}>
+              <Text style={Styles.movieSubJudul}>imdbID:</Text> {item.imdbID}
+            </Text>
+            <Text style={Styles.movieSubtitle}>
+              <Text style={Styles.movieSubJudul}>Type:</Text> {item.Type}
+            </Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -52,15 +63,15 @@ const MovieLists = ({ navigation }) => {
   };
 
   return (
-    <FlatList 
+    <FlatList
       data={movies}
       renderItem={renderItem}
       keyExtractor={(_, index) => index.toString()}
       showsVerticalScrollIndicator={false}
-      onEndReached={loadMore}  
+      onEndReached={loadMore}
       onEndReachedThreshold={0.7}
     />
-  )
+  );
 };
 
 export default MovieLists;
