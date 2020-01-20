@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect } from 'react'
 import { 
   Text, 
   View, 
@@ -14,7 +14,6 @@ import { Styles } from './MovieLists.style';
 const MovieLists = ({ navigation }) => {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getMovies();
