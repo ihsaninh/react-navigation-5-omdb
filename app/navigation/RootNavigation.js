@@ -3,7 +3,7 @@ import { View, Text, Button } from 'react-native';
 import { NavigationNativeContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import MovieLists from '../screens/MovieLists';
+import MovieLists from '../screens/MovieLists/MovieLists.screen';
 import MovieDetails from '../screens/MovieDetails';
 
 const Stack = createStackNavigator();
@@ -11,11 +11,11 @@ const Stack = createStackNavigator();
 const RootNavigation = () => {
   const screenOptions = {
     headerStyle: {
-      backgroundColor: '#263238',
+      backgroundColor: '#393939',
     },
     headerTintColor: '#fff',
     headerTitleStyle: {
-      fontWeight: 'bold',
+      fontFamily: 'Raleway-SemiBold'
     },
   };
   return (

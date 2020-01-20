@@ -6,7 +6,7 @@ import RootNavigation from './app/navigation/RootNavigation';
 const AppNavigator = () => {
   return (
     <Fragment>
-      <StatusBar barStyle="light-content" backgroundColor="#1c2429" />
+      <StatusBar barStyle="light-content" backgroundColor="#1D1D1D" />
       <RootNavigation />
     </Fragment>
   )

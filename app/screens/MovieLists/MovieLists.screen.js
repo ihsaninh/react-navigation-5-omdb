@@ -9,7 +9,7 @@ import {
   TouchableOpacity 
 } from 'react-native'
 
-const width = Dimensions.get('window').width;
+import { Styles } from './MovieLists.style';
 
 const MovieLists = ({ navigation }) => {
   const [movies, setMovies] = useState([]);
@@ -18,20 +18,20 @@ const MovieLists = ({ navigation }) => {
 
   useEffect(() => {
     getMovies();
-  }, []);
+  }, [page]);
 
-  const getMovies = () => {
-    fetch(`http://www.omdbapi.com/?s=Harry Potter&apikey=867fb0f7&page=${page}`)
-      .then(res => res.json())
-      .then(movies => {
-        setMovies(movies.Search);
-        setLoading(false);
-      })
-      .catch(err => console.log(err))
+  const getMovies = async () => {
+    let response = await fetch(`http://www.omdbapi.com/?s=Transformers&apikey=867fb0f7&page=${page}`);
+    let data = await response.json();
+    setMovies([...movies,...data.Search]);
   }
 
   const handleOnpress = item => () => {
     navigation.navigate('MovieDetails', { imdbID: item });
+  };
+
+  const loadMore = () => {
+    setPage(page + 1);
   };
 
   const renderItem = ({ item }) => {
@@ -52,69 +52,16 @@ const MovieLists = ({ navigation }) => {
     );
   };
 
-  const separator = () => {
-    return (
-      <View style={Styles.separator} />
-    );
-  };
-
   return (
     <FlatList 
       data={movies}
       renderItem={renderItem}
       keyExtractor={(_, index) => index.toString()}
-      showsVerticalScrollIndicator={false}  
-      ItemSeparatorComponent={separator}
+      showsVerticalScrollIndicator={false}
+      onEndReached={loadMore}  
+      onEndReachedThreshold={0.7}
     />
   )
 };
-
-const Styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#2c3940',
-  },
-  movieCard: {
-    flexDirection: 'row',
-    padding: 10,
-    margin: 10,
-    marginBottom: 0,
-    width: (width * 0.92),
-  },
-  bannerContainer: {
-    flex: 1.2,
-    justifyContent: 'center'
-  },
-  banner: {
-    height: 125,
-    width: 125,
-    borderRadius: 10,
-  },
-  movieDescription: {
-    flex: 1.9,
-    flexDirection: 'column',
-    marginLeft: 10,
-  },
-  movieTitle: {
-    color: 'white',
-    fontSize: 18,
-    fontWeight: 'bold',
-    paddingBottom: 10,
-    lineHeight: 25,
-  },
-  movieSubtitle: {
-    color: 'white',
-    fontSize: 15,
-    paddingBottom: 10,
-  },
-  movieSubJudul: {
-    fontWeight: 'bold',
-  },
-  separator: {
-    height: 2,
-    width,
-    backgroundColor: '#32414a',
-  }
-})
 
 export default MovieLists;
