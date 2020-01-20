@@ -20,10 +20,10 @@ const MovieLists = ({ navigation }) => {
   }, [page]);
 
   const getMovies = async () => {
-    let response = await fetch(`http://www.omdbapi.com/?s=Transformers&apikey=867fb0f7&page=${page}`);
-    let data = await response.json();
+    const response = await fetch(`http://www.omdbapi.com/?s=Transformers&apikey=867fb0f7&page=${page}`);
+    const data = await response.json();
     setMovies([...movies,...data.Search]);
-  }
+  };
 
   const handleOnpress = item => () => {
     navigation.navigate('MovieDetails', { imdbID: item });
