@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, Image, ScrollView } from 'react-native';
 
 import { Styles } from './MovieDetails.style';
+import { MovieDetailsComponent } from '../../components/MovieDetails/MovieDetails.component';
 
 const MovieDetails = ({ route }) => {
   const [movieDetail, setMovieDetail] = useState([]);
@@ -32,41 +33,19 @@ const MovieDetails = ({ route }) => {
     );
   };
 
-  const remderDetailMovie = () => {
+  const remderDetailMovie = props => {
     return (
-      <View style={Styles.detailContainer}>
-        <Text style={Styles.title}>{movieDetail.Title}</Text>
-        <View style={Styles.subCategory}>
-          <View style={Styles.subJudulContainer}>
-            <Text style={Styles.subJudul}>Released</Text>
-            <Text style={Styles.subJudulFill}>{movieDetail.Released}</Text>
-          </View>
-          <View style={Styles.subJudulContainer}>
-            <Text style={Styles.subJudul}>Genre</Text>
-            <Text style={Styles.subJudulFill}>{movieDetail.Genre}</Text>
-          </View>
-          <View style={Styles.subJudulContainer}>
-            <Text style={Styles.subJudul}>Director</Text>
-            <Text style={Styles.subJudulFill}>{movieDetail.Director}</Text>
-          </View>
-          <View style={Styles.subJudulContainer}>
-            <Text style={Styles.subJudul}>Awards</Text>
-            <Text style={Styles.subJudulFill}>{movieDetail.Awards}</Text>
-          </View>
-          <View style={Styles.subJudulContainer}>
-            <Text style={Styles.subJudul}>Actors</Text>
-            <Text style={Styles.subJudulFill}>{movieDetail.Actors}</Text>
-          </View>
-          <View style={Styles.subJudulContainer}>
-            <Text style={Styles.subJudul}>Plot</Text>
-            <Text style={Styles.subJudulFill}>{movieDetail.Plot}</Text>
-          </View>
-          <View style={Styles.subJudulContainer}>
-            <Text style={Styles.subJudul}>Writer</Text>
-            <Text style={Styles.subJudulFill}>{movieDetail.Writer}</Text>
-          </View>
-        </View>
-      </View>
+      <MovieDetailsComponent
+        title={movieDetail.Title}
+        released={movieDetail.Released}
+        genre={movieDetail.Genre}
+        director={movieDetail.Director}
+        awards={movieDetail.Awards}
+        actors={movieDetail.Actors}
+        plot={movieDetail.Plot}
+        writer={MovieDetails.Writer}
+        {...props}
+      />
     );
   };
 
