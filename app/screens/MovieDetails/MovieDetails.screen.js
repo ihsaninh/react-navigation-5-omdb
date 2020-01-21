@@ -21,12 +21,13 @@ const MovieDetails = ({ route }) => {
   };
 
   const renderBanner = () => {
+    const { Poster } = movieDetail;
     return (
       <View style={Styles.bannerContainer}>
         <Image
           style={Styles.banner}
           source={{
-            uri: movieDetail.Poster,
+            uri: Poster,
           }}
         />
       </View>
