@@ -34,16 +34,26 @@ const MovieDetails = ({ route }) => {
   };
 
   const renderDetailMovie = props => {
+    const {
+      Title,
+      Released,
+      Genre,
+      Director,
+      Awards,
+      Actors,
+      Plot,
+      Writer,
+    } = movieDetail;
     return (
       <MovieDetailsComponent
-        title={movieDetail.Title}
-        released={movieDetail.Released}
-        genre={movieDetail.Genre}
-        director={movieDetail.Director}
-        awards={movieDetail.Awards}
-        actors={movieDetail.Actors}
-        plot={movieDetail.Plot}
-        writer={MovieDetails.Writer}
+        title={Title}
+        released={Released}
+        genre={Genre}
+        director={Director}
+        awards={Awards}
+        actors={Actors}
+        plot={Plot}
+        writer={Writer}
         {...props}
       />
     );
