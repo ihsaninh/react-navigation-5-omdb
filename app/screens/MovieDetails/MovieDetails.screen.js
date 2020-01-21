@@ -47,14 +47,14 @@ const MovieDetails = ({ route }) => {
     } = movieDetail;
     return (
       <MovieDetailsComponent
+        plot={Plot}
         title={Title}
-        released={Released}
         genre={Genre}
-        director={Director}
         awards={Awards}
         actors={Actors}
-        plot={Plot}
         writer={Writer}
+        director={Director}
+        released={Released}
         {...props}
       />
     );
