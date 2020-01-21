@@ -28,7 +28,9 @@ const MovieLists = ({ navigation }) => {
   };
 
   const handleOnpress = item => () => {
-    navigation.navigate('MovieDetails', { imdbID: item });
+    navigation.navigate('MovieDetails', {
+      imdbID: item,
+    });
   };
 
   const loadMore = () => {
@@ -63,6 +65,7 @@ const MovieLists = ({ navigation }) => {
   };
 
   return (
+    <View style={Styles.contentContainer}>
     <FlatList
       data={movies}
       renderItem={renderItem}
@@ -71,6 +74,7 @@ const MovieLists = ({ navigation }) => {
       onEndReached={loadMore}
       onEndReachedThreshold={0.7}
     />
+    </View>
   );
 };
 

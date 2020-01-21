@@ -5,9 +5,9 @@ const width = Dimensions.get('window').width;
 const Styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#212121',
   },
-  containerFlatlist: {
+  contentContainer: {
+    flex: 1,
     backgroundColor: '#212121',
   },
   movieCard: {
