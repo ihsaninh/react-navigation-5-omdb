@@ -33,7 +33,7 @@ const MovieDetails = ({ route }) => {
     );
   };
 
-  const remderDetailMovie = props => {
+  const renderDetailMovie = props => {
     return (
       <MovieDetailsComponent
         title={movieDetail.Title}
@@ -53,7 +53,7 @@ const MovieDetails = ({ route }) => {
     <View style={Styles.container}>
       <ScrollView>
         {renderBanner()}
-        {remderDetailMovie()}
+        {renderDetailMovie()}
       </ScrollView>
     </View>
   );
