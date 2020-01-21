@@ -25,8 +25,7 @@ const MovieDetails = ({ route }) => {
         <Image
           style={Styles.banner}
           source={{
-            uri:
-              movieDetail.Poster
+            uri: movieDetail.Poster,
           }}
         />
       </View>

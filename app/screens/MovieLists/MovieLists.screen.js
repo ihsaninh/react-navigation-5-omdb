@@ -66,14 +66,14 @@ const MovieLists = ({ navigation }) => {
 
   return (
     <View style={Styles.contentContainer}>
-    <FlatList
-      data={movies}
-      renderItem={renderItem}
-      keyExtractor={(_, index) => index.toString()}
-      showsVerticalScrollIndicator={false}
-      onEndReached={loadMore}
-      onEndReachedThreshold={0.7}
-    />
+      <FlatList
+        data={movies}
+        renderItem={renderItem}
+        keyExtractor={(_, index) => index.toString()}
+        showsVerticalScrollIndicator={false}
+        onEndReached={loadMore}
+        onEndReachedThreshold={0.7}
+      />
     </View>
   );
 };

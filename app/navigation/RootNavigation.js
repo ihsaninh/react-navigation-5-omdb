@@ -15,17 +15,25 @@ const RootNavigation = () => {
     },
     headerTintColor: '#fff',
     headerTitleStyle: {
-      fontFamily: 'Raleway-SemiBold'
+      fontFamily: 'Raleway-SemiBold',
     },
   };
   return (
     <NavigationNativeContainer>
       <Stack.Navigator screenOptions={screenOptions}>
-        <Stack.Screen name="MovieList" component={MovieLists} options={{ title: 'The Open Movie Database' }} />
-        <Stack.Screen name="MovieDetails" component={MovieDetails} options={{ title: 'Movie Details' }} />
+        <Stack.Screen
+          name="MovieList"
+          component={MovieLists}
+          options={{ title: 'The Open Movie Database' }}
+        />
+        <Stack.Screen
+          name="MovieDetails"
+          component={MovieDetails}
+          options={{ title: 'Movie Details' }}
+        />
       </Stack.Navigator>
     </NavigationNativeContainer>
   );
-}
+};
 
 export default RootNavigation;
