@@ -4,8 +4,6 @@ const Styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#212121'
-    // justifyContent: 'center',
-    // alignItems: 'center'
   },
   bannerContainer: {
     margin: 20,
@@ -14,9 +12,11 @@ const Styles = StyleSheet.create({
     justifyContent: 'center',
   },
   banner: {
-    height: 200,
-    width: 200,
-    borderRadius: 100
+    height: 180,
+    width: 180,
+    borderRadius: 150,
+    borderColor: '#555',
+    borderWidth: 2,
   },
   detailContainer: {
     flex: 3,
@@ -32,7 +32,6 @@ const Styles = StyleSheet.create({
   subCategory: {
     marginVertical: 20,
     borderRadius: 5,
-    // padding: 20
   },
   subCategoryTitle: {
     fontSize: 20,
@@ -56,7 +55,9 @@ const Styles = StyleSheet.create({
   subJudulContainer: {
     marginTop: 10,
     backgroundColor: '#333333',
-    padding: 20
+    paddingTop: 10,
+    padding: 20,
+    borderRadius: 5
   }
 });
 

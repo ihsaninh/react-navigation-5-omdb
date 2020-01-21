@@ -21,7 +21,7 @@ const MovieLists = ({ navigation }) => {
 
   const getMovies = async () => {
     const response = await fetch(
-      `http://www.omdbapi.com/?s=Transformers&apikey=867fb0f7&page=${page}`,
+      `https://www.omdbapi.com/?s=Avengers&apikey=867fb0f7&page=${page}`,
     );
     const data = await response.json();
     setMovies([...movies, ...data.Search]);
