@@ -1,7 +1,10 @@
 import React, { Fragment } from 'react';
 import { StatusBar } from 'react-native';
+import { enableScreens } from 'react-native-screens';
 
 import RootNavigation from './app/navigation/RootNavigation';
+
+enableScreens();
 
 const AppNavigator = () => {
   return (

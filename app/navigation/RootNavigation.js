@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { View, Text, Button } from 'react-native';
-import { NavigationNativeContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 
 import MovieLists from '../screens/MovieLists/MovieLists.screen';
 import MovieDetails from '../screens/MovieDetails/MovieDetails.screen';
@@ -17,10 +17,13 @@ const RootNavigation = () => {
     headerTitleStyle: {
       fontFamily: 'Raleway-SemiBold',
     },
+    gestureEnabled: true,
+    cardOverlayEnabled: true,
+    ...TransitionPresets.ModalPresentationIOS,
   };
   return (
-    <NavigationNativeContainer>
-      <Stack.Navigator screenOptions={screenOptions}>
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={screenOptions} mode="modal">
         <Stack.Screen
           name="MovieList"
           component={MovieLists}
@@ -32,7 +35,7 @@ const RootNavigation = () => {
           options={{ title: 'Movie Details' }}
         />
       </Stack.Navigator>
-    </NavigationNativeContainer>
+    </NavigationContainer>
   );
 };
 
