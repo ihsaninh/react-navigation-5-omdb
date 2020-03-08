@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { View, Text, Button } from 'react-native';
+import { Animated, Easing } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 
@@ -19,7 +20,7 @@ const RootNavigation = () => {
     },
     gestureEnabled: true,
     cardOverlayEnabled: true,
-    ...TransitionPresets.ModalPresentationIOS,
+    ...TransitionPresets.ModalPresentationIOS
   };
   return (
     <NavigationContainer>

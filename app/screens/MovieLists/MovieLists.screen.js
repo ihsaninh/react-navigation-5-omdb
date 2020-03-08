@@ -4,10 +4,13 @@ import {
   View,
   StyleSheet,
   Image,
+  Button,
   FlatList,
   Dimensions,
   TouchableOpacity,
 } from 'react-native';
+import Geolocation from '@react-native-community/geolocation';
+import RNMockLocationDetector from "react-native-mock-location-detector";
 
 import { Styles } from './MovieLists.style';
 
@@ -16,17 +19,16 @@ const MovieLists = ({ navigation }) => {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
+    const getMovies = async () => {
+      const response = await fetch(
+        `https://www.omdbapi.com/?s=Avengers&apikey=867fb0f7&page=${page}`,
+      );
+      const data = await response.json();
+      setMovies([...movies, ...data.Search]);
+    }
     getMovies();
-  }, [page]);
-
-  const getMovies = async () => {
-    const response = await fetch(
-      `https://www.omdbapi.com/?s=Avengers&apikey=867fb0f7&page=${page}`,
-    );
-    const data = await response.json();
-    setMovies([...movies, ...data.Search]);
-  };
-
+  }, []);
+  
   const handleOnpress = item => () => {
     navigation.navigate('MovieDetails', {
       imdbID: item,
